@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -7,11 +7,11 @@ using Photon.Realtime;
 namespace KID
 {
     /// <summary>
-    /// ¤jÆUºŞ²z¾¹¡Gª±®a¦WºÙ¡B³Ğ«Ø¡B¥[¤J©Ğ¶¡
+    /// å¤§å»³ç®¡ç†å™¨ï¼šç©å®¶åç¨±ã€å‰µå»ºã€åŠ å…¥æˆ¿é–“
     /// </summary>
     public class LobbyManager : MonoBehaviourPunCallbacks
     {
-        #region ¤¶­±¸ê®Æ
+        #region ä»‹é¢è³‡æ–™
         private TMP_InputField inputFieldPlayerName;
         private TMP_InputField inputFieldCreateRoomName;
         private TMP_InputField inputFieldJoinRoomName;
@@ -25,29 +25,29 @@ namespace KID
         private TextMeshProUGUI textRoomPlayerList; 
         #endregion
 
-        #region ¨p¤H¸ê®Æ
+        #region ç§äººè³‡æ–™
         private string namePlayer;
         private string nameCreateRoom;
         private string nameJoinRoom;
         private byte maxPlayer = 10;
         #endregion
 
-        #region ¨Æ¥ó
+        #region äº‹ä»¶
         private void Awake()
         {
-            #region ·j´Mª«¥ó
-            inputFieldPlayerName = GameObject.Find("¿é¤JÄæ¦ìª±®a¦WºÙ").GetComponent<TMP_InputField>();
-            inputFieldCreateRoomName = GameObject.Find("¿é¤JÄæ¦ì³Ğ«Ø©Ğ¶¡¦WºÙ").GetComponent<TMP_InputField>();
-            inputFieldJoinRoomName = GameObject.Find("¿é¤JÄæ¦ì¥[¤J©Ğ¶¡¦WºÙ").GetComponent<TMP_InputField>();
-            btnCreateRoom = GameObject.Find("«ö¶s³Ğ«Ø©Ğ¶¡").GetComponent<Button>();
-            btnJoinRoom = GameObject.Find("«ö¶s¥[¤J©Ğ¶¡").GetComponent<Button>();
-            btnJoinRandomRoom = GameObject.Find("«ö¶s¥[¤JÀH¾÷©Ğ¶¡").GetComponent<Button>();
-            groupLobbyMain = GameObject.Find("¹CÀ¸¤jÆU¥D­n¤¶­±").GetComponent<CanvasGroup>();
+            #region æœå°‹ç‰©ä»¶
+            inputFieldPlayerName = GameObject.Find("è¼¸å…¥æ¬„ä½ç©å®¶åç¨±").GetComponent<TMP_InputField>();
+            inputFieldCreateRoomName = GameObject.Find("è¼¸å…¥æ¬„ä½å‰µå»ºæˆ¿é–“åç¨±").GetComponent<TMP_InputField>();
+            inputFieldJoinRoomName = GameObject.Find("è¼¸å…¥æ¬„ä½åŠ å…¥æˆ¿é–“åç¨±").GetComponent<TMP_InputField>();
+            btnCreateRoom = GameObject.Find("æŒ‰éˆ•å‰µå»ºæˆ¿é–“").GetComponent<Button>();
+            btnJoinRoom = GameObject.Find("æŒ‰éˆ•åŠ å…¥æˆ¿é–“").GetComponent<Button>();
+            btnJoinRandomRoom = GameObject.Find("æŒ‰éˆ•åŠ å…¥éš¨æ©Ÿæˆ¿é–“").GetComponent<Button>();
+            groupLobbyMain = GameObject.Find("éŠæˆ²å¤§å»³ä¸»è¦ä»‹é¢").GetComponent<CanvasGroup>();
 
-            groupRoom = GameObject.Find("©Ğ¶¡¤¶­±").GetComponent<CanvasGroup>();
-            btnStart = GameObject.Find("«ö¶s¶}©l¹CÀ¸").GetComponent<Button>();
-            textRoom = GameObject.Find("©Ğ¶¡¦WºÙ").GetComponent<TextMeshProUGUI>();
-            textRoomPlayerList = GameObject.Find("©Ğ¶¡ª±®a¦WºÙ²M³æ").GetComponent<TextMeshProUGUI>();
+            groupRoom = GameObject.Find("æˆ¿é–“ä»‹é¢").GetComponent<CanvasGroup>();
+            btnStart = GameObject.Find("æŒ‰éˆ•é–‹å§‹éŠæˆ²").GetComponent<Button>();
+            textRoom = GameObject.Find("æˆ¿é–“åç¨±").GetComponent<TextMeshProUGUI>();
+            textRoomPlayerList = GameObject.Find("æˆ¿é–“ç©å®¶åç¨±æ¸…å–®").GetComponent<TextMeshProUGUI>();
             #endregion
 
             JoinMaster();
@@ -55,7 +55,7 @@ namespace KID
             inputFieldPlayerName.onEndEdit.AddListener(input =>
             { 
                 namePlayer = input;
-                PhotonNetwork.NickName = namePlayer;    // ¦øªA¾¹.¼ÊºÙ = ª±®aªº¦WºÙ
+                PhotonNetwork.NickName = namePlayer;    // ä¼ºæœå™¨.æš±ç¨± = ç©å®¶çš„åç¨±
             });
             inputFieldCreateRoomName.onEndEdit.AddListener(input => nameCreateRoom = input);
             inputFieldJoinRoomName.onEndEdit.AddListener(input => nameJoinRoom = input);
@@ -68,15 +68,15 @@ namespace KID
         }
         #endregion
 
-        #region ¨p¤H¤èªk
+        #region ç§äººæ–¹æ³•
         [PunRPC]
         private void RPCStartGame()
         {
-            PhotonNetwork.LoadLevel("¹CÀ¸³õ´º");
+            PhotonNetwork.LoadLevel("éŠæˆ²å ´æ™¯");
         }
 
         /// <summary>
-        /// ¥[¤J Photon ¦øªA¾¹
+        /// åŠ å…¥ Photon ä¼ºæœå™¨
         /// </summary>
         private void JoinMaster()
         {
@@ -84,17 +84,17 @@ namespace KID
         }
 
         /// <summary>
-        /// «ö¶s¨Æ¥ó¡G«Ø¥ß©Ğ¶¡
+        /// æŒ‰éˆ•äº‹ä»¶ï¼šå»ºç«‹æˆ¿é–“
         /// </summary>
         private void BtnCreateRoom()
         {
-            RoomOptions ro = new RoomOptions();             // ©Ğ¶¡¸ê°T
-            ro.MaxPlayers = maxPlayer;                      // ³Ì¤j¤H¼Æ
-            PhotonNetwork.CreateRoom(nameCreateRoom, ro);   // PUN «Ø¥ß©Ğ¶¡(©Ğ¶¡¦WºÙ¡A©Ğ¶¡¸ê°T)
+            RoomOptions ro = new RoomOptions();             // æˆ¿é–“è³‡è¨Š
+            ro.MaxPlayers = maxPlayer;                      // æœ€å¤§äººæ•¸
+            PhotonNetwork.CreateRoom(nameCreateRoom, ro);   // PUN å»ºç«‹æˆ¿é–“(æˆ¿é–“åç¨±ï¼Œæˆ¿é–“è³‡è¨Š)
         }
 
         /// <summary>
-        /// «ö¶s¨Æ¥ó¡G¥[¤J©Ğ¶¡
+        /// æŒ‰éˆ•äº‹ä»¶ï¼šåŠ å…¥æˆ¿é–“
         /// </summary>
         private void BtnJoinRoom()
         {
@@ -102,7 +102,7 @@ namespace KID
         }
 
         /// <summary>
-        /// «ö¶s¨Æ¥ó¡G¥[¤JÀH¾÷©Ğ¶¡
+        /// æŒ‰éˆ•äº‹ä»¶ï¼šåŠ å…¥éš¨æ©Ÿæˆ¿é–“
         /// </summary>
         private void BtnJoinRandomRoom()
         {
@@ -110,7 +110,7 @@ namespace KID
         }
 
         /// <summary>
-        /// §ó·sª±®a²M³æ
+        /// æ›´æ–°ç©å®¶æ¸…å–®
         /// </summary>
         private void UpdatePlayerList()
         {
@@ -120,46 +120,46 @@ namespace KID
 
             for (int i = 0; i < players.Length; i++)
             {
-                if (i == 0) textRoomPlayerList.text = "©Ğ¥D¡G" + players[i].NickName;
-                else textRoomPlayerList.text += "ª±®a¡G" + players[i].NickName;
+                if (i == 0) textRoomPlayerList.text = "æˆ¿ä¸»ï¼š" + players[i].NickName;
+                else textRoomPlayerList.text += "ç©å®¶ï¼š" + players[i].NickName;
 
                 textRoomPlayerList.text += "\n";
             }
         } 
         #endregion
 
-        #region Photon ¨Æ¥ó
+        #region Photon äº‹ä»¶
         /// <summary>
-        /// ¥[¤J¦øªA¾¹¦¨¥\·|°õ¦æªº¤èªk
+        /// åŠ å…¥ä¼ºæœå™¨æˆåŠŸæœƒåŸ·è¡Œçš„æ–¹æ³•
         /// </summary>
         public override void OnConnectedToMaster()
         {
             base.OnConnectedToMaster();
 
             groupLobbyMain.interactable = true;
-            print("<color=yellow>¥[¤J¦øªA¾¹¦¨¥\¡I</color>");
+            print("<color=yellow>åŠ å…¥ä¼ºæœå™¨æˆåŠŸï¼</color>");
         }
 
         /// <summary>
-        /// ³Ğ«Ø©Ğ¶¡¦¨¥\·|°õ¦æªº¤èªk
+        /// å‰µå»ºæˆ¿é–“æˆåŠŸæœƒåŸ·è¡Œçš„æ–¹æ³•
         /// </summary>
         public override void OnCreatedRoom()
         {
             base.OnCreatedRoom();
-            print($"<color=orange>¦¨¥\³Ğ«Ø©Ğ¶¡¡A©Ğ¶¡¦WºÙ¡G{ nameCreateRoom } </color>");
+            print($"<color=orange>æˆåŠŸå‰µå»ºæˆ¿é–“ï¼Œæˆ¿é–“åç¨±ï¼š{ nameCreateRoom } </color>");
 
             groupRoom.alpha = 1;
             groupRoom.interactable = true;
             groupRoom.blocksRaycasts = true;
             btnStart.interactable = true;
 
-            textRoom.text = "©Ğ¶¡¦WºÙ¡G" + nameCreateRoom;
+            textRoom.text = "æˆ¿é–“åç¨±ï¼š" + nameCreateRoom;
             textRoomPlayerList.text = "";
-            textRoomPlayerList.text = "©Ğ¥D¡G" + namePlayer;
+            textRoomPlayerList.text = "æˆ¿ä¸»ï¼š" + namePlayer;
         }
 
         /// <summary>
-        ///  ¥[¤J©Ğ¶¡¦¨¥\«á·|°õ¦æªº¤èªk
+        ///  åŠ å…¥æˆ¿é–“æˆåŠŸå¾ŒæœƒåŸ·è¡Œçš„æ–¹æ³•
         /// </summary>
         public override void OnJoinedRoom()
         {
@@ -169,13 +169,13 @@ namespace KID
             groupRoom.interactable = true;
             groupRoom.blocksRaycasts = true;
 
-            textRoom.text = "©Ğ¶¡¦WºÙ¡G" + PhotonNetwork.CurrentRoom.Name;
+            textRoom.text = "æˆ¿é–“åç¨±ï¼š" + PhotonNetwork.CurrentRoom.Name;
 
             UpdatePlayerList();
         }
 
         /// <summary>
-        /// ¦³·sª±®a¥[¤J©Ğ¶¡®É·|°õ¦æ¤@¦¸ªº¤èªk
+        /// æœ‰æ–°ç©å®¶åŠ å…¥æˆ¿é–“æ™‚æœƒåŸ·è¡Œä¸€æ¬¡çš„æ–¹æ³•
         /// </summary>
         /// <param name="newPlayer"></param>
         public override void OnPlayerEnteredRoom(Player newPlayer)
