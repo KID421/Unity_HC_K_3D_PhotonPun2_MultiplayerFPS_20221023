@@ -10,6 +10,8 @@ namespace KID
     {
         [SerializeField, Header("玩家預製物")]
         private GameObject prefabPlayer;
+        [SerializeField, Header("玩家生成點")]
+        private Transform[] spawnPoints;
 
         private void Awake()
         {
@@ -21,9 +23,12 @@ namespace KID
         /// </summary>
         private void Spawn()
         {
+            int random = Random.Range(0, spawnPoints.Length);
+            Vector3 pos = spawnPoints[random].position;
+
             // Instantiate(); // 非連線遊戲的生成
             // 伺服器.生成(物件名稱，座標，角度)
-            PhotonNetwork.Instantiate(prefabPlayer.name, new Vector3(30, 0, 20), Quaternion.identity);
+            PhotonNetwork.Instantiate(prefabPlayer.name, pos, Quaternion.identity);
         }
     }
 }

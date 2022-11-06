@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
@@ -5,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace StarterAssets
 {
-	public class StarterAssetsInputs : MonoBehaviour
+	public class StarterAssetsInputs : MonoBehaviourPunCallbacks
 	{
 		[Header("Character Input Values")]
 		public Vector2 move;
@@ -68,7 +69,7 @@ namespace StarterAssets
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+			if (photonView.IsMine) SetCursorState(cursorLocked);
 		}
 
 		private void SetCursorState(bool newState)
@@ -76,5 +77,4 @@ namespace StarterAssets
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
 }
